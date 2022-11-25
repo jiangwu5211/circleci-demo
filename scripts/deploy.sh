@@ -1,9 +1,11 @@
+# 告诉linux操作系统，这是一个shell脚本，需要按照shell脚本来执行这个文件
 #!/bin/sh
 # 构想 https://gist.github.com/motemen/8595451
 
 # 基于 https://github.com/eldarlabs/ghpages-deploy-script/blob/master/scripts/deploy-ghpages.sh
 # MIT许可 https://github.com/eldarlabs/ghpages-deploy-script/blob/master/LICENSE
 
+# 如果是一个非0的错误，则退出shell脚本的执行。这个shell脚本相当于一个函数，函数不同的返回值表示这个shell脚本是否成功的执行。如果返回0，则表示这个shell脚本成功执行了。
 # abort the script if there is a non-zero error
 set -e
 
@@ -36,7 +38,7 @@ else
   git checkout --orphan gh-pages
 fi
 
-# 把构建好的文件目录给拷贝进来
+# 把构建好的文件目录给拷贝进来，如dist目录
 cp -a "../${siteSource}/." .
 
 ls -la
